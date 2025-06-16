@@ -14,7 +14,7 @@ html {
 }
 
 .bold {
-    font-weight: bold;
+    font-weight: bold !important;
 }
 
 .opacity-to-1 {
@@ -93,14 +93,16 @@ html {
     text-align: left;
 }
 #desc-div h2 {
-    font-size: 30px;
+	font-family: Bodoni Moda, helvetica-neue, helvetica, arial, sans-serif;
+    font-size: 25px;
     text-transform: none !important;
     margin-top: 30px;
     margin-bottom: 15px;
     text-align: center;
 }
 #desc-div span {
-    font-size: 19px;
+    font-size: 16px;
+	font-weight: 300;
     text-align: left;
 }
 
@@ -121,9 +123,9 @@ html {
     color: white;
     cursor: pointer;
     font-family: Rubik, helvetica-neue, helvetica, arial, sans-serif;
-    font-size: 20px;
+    font-size: 14px;
     padding: 12px 22px;
-    font-weight: 500;
+    font-weight: 700;
     border-radius: 3px;
     letter-spacing: 1px;
     text-transform: uppercase;
