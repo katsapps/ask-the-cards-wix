@@ -290,8 +290,8 @@ function set_img_size() {
 
 // adjust iframe height
   function sendSizeToParent() {
-    const height = document.body.scrollHeight + 50;
-    const width = document.body.scrollWidth + 5;
+    const height = document.body.scrollHeight;
+    const width = document.body.scrollWidth;
     parent.postMessage({ iframeHeight: height, iframeWidth: width }, '*');
   }
 
