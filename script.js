@@ -288,6 +288,25 @@ function set_img_size() {
     }
 }
 
+
+
+    function onTransitionDone() {
+      transitionsRemaining--;
+      if (transitionsRemaining === 0) {
+        console.log("All transitions finished, now triggering layout update");
+        
+        // Wait for .to-display transitions to complete too
+        $('#desc-div').addClass('to-display');
+        $('#shuffle-deck').addClass('to-display');
+    
+        // Wait for those transitions to settle
+        setTimeout(() => {
+          sendSizeToParent();
+        }, 300); // adjust this delay to match your CSS transition-duration
+      }
+    }
+
+
 // adjust iframe height
   function sendSizeToParent() {
     const height = document.body.scrollHeight + 25;
@@ -319,7 +338,29 @@ $(document).ready(function() {
 
             set_img_size();
 
+
             $('#desc-div').html($('#' + card_name).html());
+            $('#imgs-div').removeClass('hand-cursor');
+            $('#transition-img').addClass('opacity-to-1');
+            $('.picked-card').addClass('opacity-to-1');
+            
+            shuffled = false;
+            
+            // Transition tracking
+            let transitionsRemaining = 2;
+
+            
+            // Attach listeners BEFORE transition starts
+            $('#transition-img, .picked-card').one('transitionend', function (e) {
+              if (e.originalEvent.propertyName === 'opacity') {
+                onTransitionDone();
+              }
+            });
+
+
+
+            
+            /*$('#desc-div').html($('#' + card_name).html());
             $('#imgs-div').removeClass('hand-cursor');
             $('#transition-img').addClass('opacity-to-1');
             $('.picked-card').addClass('opacity-to-1');
@@ -329,10 +370,14 @@ $(document).ready(function() {
             setTimeout(function() {
                 $('#desc-div').addClass('to-display');
                 $('#shuffle-deck').addClass('to-display');
-                  setTimeout(function() {
-                    sendSizeToParent();
-                  }, 100);
             }, 2100);
+
+            let transitionsRemaining = 2;
+            $('#transition-img, .picked-card').on('transitionend', function (e) {
+              if (e.originalEvent.propertyName === 'opacity') {
+                onTransitionDone();
+              }
+            });*/
         }
     });
 
@@ -351,9 +396,13 @@ $(document).ready(function() {
         setTimeout(function() {
             $('#desc-div').removeClass('to-display');
             $('#shuffle-deck').removeClass('to-display');
-              setTimeout(function() {
-                sendSizeToParent();
-              }, 100);
         }, 1000);
+
+        let transitionsRemaining = 2;
+        $('#transition-img, .picked-card').on('transitionend', function (e) {
+          if (e.originalEvent.propertyName === 'opacity') {
+            onTransitionDone();
+          }
+        });
     });
 });
