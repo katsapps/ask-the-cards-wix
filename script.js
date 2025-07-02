@@ -246,7 +246,8 @@ var img_url_dict = {
     "_backm": "https://static.wixstatic.com/media/c5e9ce_61df22c4c3e24117a5eca0d60c4ac907~mv2.jpg",
     "_transitionm": "https://static.wixstatic.com/media/c5e9ce_f1352c9fda414f999a6f20a351957025~mv2.jpg"
 };
-
+            // Transition tracking
+            let transitionsRemaining = 2;
 $(window).resize(function() {
     set_img_size();
 });
@@ -346,8 +347,7 @@ $(document).ready(function() {
             
             shuffled = false;
             
-            // Transition tracking
-            let transitionsRemaining = 2;
+
 
             
             // Attach listeners BEFORE transition starts
