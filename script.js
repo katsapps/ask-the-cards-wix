@@ -289,10 +289,14 @@ function set_img_size() {
 }
 
 // adjust iframe height
-window.addEventListener('load', () => {
-const height = document.body.scrollHeight;
-parent.postMessage({ iframeHeight: height }, '*');
-});
+  function sendSizeToParent() {
+    const height = document.body.scrollHeight;
+    const width = document.body.scrollWidth;
+    parent.postMessage({ iframeHeight: height, iframeWidth: width }, '*');
+  }
+
+  // Optional: send size once when iframe loads
+  window.addEventListener('load', sendSizeToParent);
 
 $(document).ready(function() {
 
@@ -325,6 +329,7 @@ $(document).ready(function() {
             setTimeout(function() {
                 $('#desc-div').addClass('to-display');
                 $('#shuffle-deck').addClass('to-display');
+                sendSizeToParent();
             }, 2100);
         }
     });
