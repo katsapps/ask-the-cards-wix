@@ -326,11 +326,11 @@ $(document).ready(function() {
 
             shuffled = false;
 
-            //setTimeout(function() {
+            setTimeout(function() {
                 $('#desc-div').addClass('to-display');
                 $('#shuffle-deck').addClass('to-display');
-                sendSizeToParent();
-            //}, 2100);
+                //sendSizeToParent();
+            }, 2100);
         }
     });
 
@@ -346,11 +346,11 @@ $(document).ready(function() {
         $('#transition-img').removeClass('opacity-to-1');
         $('.picked-card').removeClass('opacity-to-1');
 
-        //setTimeout(function() {
+        setTimeout(function() {
             $('#desc-div').removeClass('to-display');
-            $('#shuffle-deck').removeClass('to-display');
-            sendSizeToParent();
-        //}, 1000);
+            $('#shuffle-deck').removeClass('to-display');s
+            //sendSizeToParent();
+        }, 1000);
         
     });
 });
