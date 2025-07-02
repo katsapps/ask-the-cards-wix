@@ -246,8 +246,7 @@ var img_url_dict = {
     "_backm": "https://static.wixstatic.com/media/c5e9ce_61df22c4c3e24117a5eca0d60c4ac907~mv2.jpg",
     "_transitionm": "https://static.wixstatic.com/media/c5e9ce_f1352c9fda414f999a6f20a351957025~mv2.jpg"
 };
-            // Transition tracking
-            let transitionsRemaining = 2;
+
 $(window).resize(function() {
     set_img_size();
 });
@@ -289,35 +288,6 @@ function set_img_size() {
     }
 }
 
-
-
-    function onTransitionDone() {
-      transitionsRemaining--;
-      if (transitionsRemaining === 0) {
-        console.log("All transitions finished, now triggering layout update");
-        
-        // Wait for .to-display transitions to complete too
-        $('#desc-div').addClass('to-display');
-        $('#shuffle-deck').addClass('to-display');
-    
-        // Wait for those transitions to settle
-        setTimeout(() => {
-          sendSizeToParent();
-        }, 300); // adjust this delay to match your CSS transition-duration
-      }
-    }
-
-
-// adjust iframe height
-  function sendSizeToParent() {
-    const height = document.body.scrollHeight + 25;
-    const width = document.body.scrollWidth;
-    parent.postMessage({ iframeHeight: height, iframeWidth: width }, '*');
-  }
-
-  // Optional: send size once when iframe loads
-  window.addEventListener('load', sendSizeToParent);
-
 $(document).ready(function() {
 
     set_img_size();
@@ -326,7 +296,6 @@ $(document).ready(function() {
         if (shuffled) {
             $('#deck-div').empty();
             chosen_num = Math.floor(Math.random() * dict_size); //65
-            chosen_num = 15; //testing
 
             var card_name = deck_dict[chosen_num.toString()]; //deck_dict["65"] = "two-of-wands"
             var img = new Image();
@@ -339,28 +308,7 @@ $(document).ready(function() {
 
             set_img_size();
 
-
             $('#desc-div').html($('#' + card_name).html());
-            $('#imgs-div').removeClass('hand-cursor');
-            $('#transition-img').addClass('opacity-to-1');
-            $('.picked-card').addClass('opacity-to-1');
-            
-            shuffled = false;
-            
-
-
-            
-            // Attach listeners BEFORE transition starts
-            $('#transition-img, .picked-card').one('transitionend', function (e) {
-              if (e.originalEvent.propertyName === 'opacity') {
-                onTransitionDone();
-              }
-            });
-
-
-
-            
-            /*$('#desc-div').html($('#' + card_name).html());
             $('#imgs-div').removeClass('hand-cursor');
             $('#transition-img').addClass('opacity-to-1');
             $('.picked-card').addClass('opacity-to-1');
@@ -371,13 +319,6 @@ $(document).ready(function() {
                 $('#desc-div').addClass('to-display');
                 $('#shuffle-deck').addClass('to-display');
             }, 2100);
-
-            let transitionsRemaining = 2;
-            $('#transition-img, .picked-card').on('transitionend', function (e) {
-              if (e.originalEvent.propertyName === 'opacity') {
-                onTransitionDone();
-              }
-            });*/
         }
     });
 
@@ -397,12 +338,5 @@ $(document).ready(function() {
             $('#desc-div').removeClass('to-display');
             $('#shuffle-deck').removeClass('to-display');
         }, 1000);
-
-        let transitionsRemaining = 2;
-        $('#transition-img, .picked-card').on('transitionend', function (e) {
-          if (e.originalEvent.propertyName === 'opacity') {
-            onTransitionDone();
-          }
-        });
     });
 });
