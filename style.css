@@ -1,7 +1,7 @@
 @charset "UTF-8";
 /************************ general styles *********************/
 html {
-    overflow: hidden;
+    overflow: scroll;
 }
 
 .page-width,
