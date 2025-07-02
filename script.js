@@ -329,7 +329,9 @@ $(document).ready(function() {
             setTimeout(function() {
                 $('#desc-div').addClass('to-display');
                 $('#shuffle-deck').addClass('to-display');
-                sendSizeToParent();
+                  setTimeout(function() {
+                    sendSizeToParent();
+                  }, 100);
             }, 2100);
         }
     });
@@ -349,7 +351,9 @@ $(document).ready(function() {
         setTimeout(function() {
             $('#desc-div').removeClass('to-display');
             $('#shuffle-deck').removeClass('to-display');
-            sendSizeToParent();
+              setTimeout(function() {
+                sendSizeToParent();
+              }, 100);
         }, 1000);
     });
 });
