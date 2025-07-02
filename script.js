@@ -290,7 +290,7 @@ function set_img_size() {
 
 // adjust iframe height
   function sendSizeToParent() {
-    const height = document.body.scrollHeight;
+    const height = document.body.scrollHeight + 25;
     const width = document.body.scrollWidth;
     parent.postMessage({ iframeHeight: height, iframeWidth: width }, '*');
   }
@@ -349,6 +349,7 @@ $(document).ready(function() {
         setTimeout(function() {
             $('#desc-div').removeClass('to-display');
             $('#shuffle-deck').removeClass('to-display');
+            sendSizeToParent();
         }, 1000);
     });
 });
