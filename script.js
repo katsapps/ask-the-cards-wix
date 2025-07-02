@@ -288,6 +288,12 @@ function set_img_size() {
     }
 }
 
+// adjust iframe height
+window.addEventListener('load', () => {
+const height = document.body.scrollHeight;
+parent.postMessage({ iframeHeight: height }, '*');
+});
+
 $(document).ready(function() {
 
     set_img_size();
