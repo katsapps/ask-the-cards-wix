@@ -288,6 +288,16 @@ function set_img_size() {
     }
 }
 
+// adjust iframe height
+  function sendSizeToParent() {
+    const height = document.body.scrollHeight;
+    const width = document.body.scrollWidth;
+    parent.postMessage({ iframeHeight: height, iframeWidth: width }, '*');
+  }
+
+  // Optional: send size once when iframe loads
+  window.addEventListener('load', sendSizeToParent);
+
 $(document).ready(function() {
 
     set_img_size();
@@ -296,6 +306,7 @@ $(document).ready(function() {
         if (shuffled) {
             $('#deck-div').empty();
             chosen_num = Math.floor(Math.random() * dict_size); //65
+            chosen_num = 15; //testing
 
             var card_name = deck_dict[chosen_num.toString()]; //deck_dict["65"] = "two-of-wands"
             var img = new Image();
@@ -315,10 +326,11 @@ $(document).ready(function() {
 
             shuffled = false;
 
-            setTimeout(function() {
+            //setTimeout(function() {
                 $('#desc-div').addClass('to-display');
                 $('#shuffle-deck').addClass('to-display');
-            }, 2100);
+                sendSizeToParent();
+            //}, 2100);
         }
     });
 
@@ -334,9 +346,11 @@ $(document).ready(function() {
         $('#transition-img').removeClass('opacity-to-1');
         $('.picked-card').removeClass('opacity-to-1');
 
-        setTimeout(function() {
+        //setTimeout(function() {
             $('#desc-div').removeClass('to-display');
             $('#shuffle-deck').removeClass('to-display');
-        }, 1000);
+            sendSizeToParent();
+        //}, 1000);
+        
     });
 });
