@@ -349,7 +349,7 @@ $(document).ready(function() {
 
         setTimeout(function() {
             $('#desc-div').removeClass('to-display');
-            $('#shuffle-deck').removeClass('to-display');s
+            $('#shuffle-deck').removeClass('to-display');
             //sendSizeToParent();
         }, 1000);
         
