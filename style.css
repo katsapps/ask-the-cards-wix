@@ -4,6 +4,11 @@ html {
     overflow: scroll;
 }
 
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+  display: none; /* Chrome, Safari */
+}
+
 .page-width,
 .main-content .wrapper {
     max-width: 1200px !important;
