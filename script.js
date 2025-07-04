@@ -349,7 +349,7 @@ $(document).ready(function() {
 				$('html, body').animate({
 				scrollTop: ($('#imgs-div').offset().top)
 			}, 500);
-		} else if if (window.location.hostname == "www.artismymagic.com") {
+		} else if (window.location.hostname == "www.artismymagic.com") {
 			document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
 		}
 		
