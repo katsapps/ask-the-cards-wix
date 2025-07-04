@@ -334,6 +334,12 @@ $(document).ready(function() {
             }, 2100);
         }
     });
+	function scrollMeIntoParentView() {
+	  const target = document.getElementById('imgs-div');
+	  const y = target.getBoundingClientRect().top;
+
+	  // Send relative scroll position to parent
+	  parent.postMessage({ scrollToIframeOffset: y }, '*'); }
 
     $('#shuffle-deck').click(function() {
 
@@ -342,8 +348,10 @@ $(document).ready(function() {
         $('html, body').animate({
             scrollTop: ($('#imgs-div').offset().top)
         }, 500);
-
-        shuffled = true;
+		
+		scrollMeIntoParentView();
+		
+        shuffled = true;		
         $('#transition-img').removeClass('opacity-to-1');
         $('.picked-card').removeClass('opacity-to-1');
 
