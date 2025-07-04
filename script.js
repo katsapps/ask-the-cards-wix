@@ -345,12 +345,16 @@ $(document).ready(function() {
 
         $('#imgs-div').addClass('hand-cursor');
 
-        $('html, body').animate({
-            scrollTop: ($('#imgs-div').offset().top)
-        }, 500);
+		if (window.location.hostname == "katsapps.github.io") {
+				$('html, body').animate({
+				scrollTop: ($('#imgs-div').offset().top)
+			}, 500);
+		} else if if (window.location.hostname == "www.artismymagic.com") {
+			document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
+		}
 		
-		scrollMeIntoParentView();
-		
+		//scrollMeIntoParentView();
+
         shuffled = true;		
         $('#transition-img').removeClass('opacity-to-1');
         $('.picked-card').removeClass('opacity-to-1');
