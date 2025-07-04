@@ -350,7 +350,6 @@ $(document).ready(function() {
         }, 500);*/
 		document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
 		//scrollMeIntoParentView();
-		document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
 		
         shuffled = true;		
         $('#transition-img').removeClass('opacity-to-1');
