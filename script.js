@@ -250,16 +250,6 @@ var img_url_dict = {
 $(window).resize(function() {
     set_img_size();
 });
-
-// Use event delegation to handle clicks on dynamically added buttons
-document.addEventListener('click', function(event) {
-	// If the clicked element has id="shuffle-deck"
-	if (event.target && event.target.id === 'shuffle-deck') {
-	// Scroll the page to the very top
-		window.scrollTo(0, 0);
-				alert("clicked new");
-	}
-});
 		
 // Reverse lookup: find the key for a given value in img_url_dict
 function getKeyByValue(object, value) {
