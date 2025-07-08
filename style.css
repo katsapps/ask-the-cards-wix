@@ -98,7 +98,7 @@ body::-webkit-scrollbar {
     font-family: Rubik, helvetica-neue, helvetica, arial, sans-serif;
     color: #222;
     display: none;
-    margin: 25px;
+    margin: 25px 0px 25px 0px;
     text-align: left;
 }
 #desc-div h2 {
@@ -110,7 +110,7 @@ body::-webkit-scrollbar {
     text-align: center;
 }
 #desc-div span {
-    font-size: 16px;
+    font-size: 14px;
 	font-weight: 300;
     text-align: left;
 }
