@@ -352,7 +352,7 @@ $(document).ready(function() {
 		
 		//scrollMeIntoParentView();
 		
-		//document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
+		document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
 		
 		//$("#shuffle-deck").on("click", function () {
 		//	$("html body").animate({scrollTop: 0 }, 800);
