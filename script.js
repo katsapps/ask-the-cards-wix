@@ -251,6 +251,16 @@ $(window).resize(function() {
     set_img_size();
 });
 
+// Use event delegation to handle clicks on dynamically added buttons
+document.addEventListener('click', function(event) {
+	// If the clicked element has id="shuffle-deck"
+	if (event.target && event.target.id === 'shuffle-deck') {
+	// Scroll the page to the very top
+		window.scrollTo(0, 0);
+				alert("clicked new");
+	}
+});
+		
 // Reverse lookup: find the key for a given value in img_url_dict
 function getKeyByValue(object, value) {
     return Object.keys(object).find(key => object[key] === value);
@@ -339,7 +349,8 @@ $(document).ready(function() {
 	  const y = target.getBoundingClientRect().top;
 
 	  // Send relative scroll position to parent
-	  parent.postMessage({ scrollToIframeOffset: y }, '*'); }
+	  parent.postMessage({ scrollToIframeOffset: y }, '*'); 
+	}
 
     $('#shuffle-deck').click(function() {
 
@@ -358,17 +369,7 @@ $(document).ready(function() {
 		//});
 		
 		//window.scrollTo(0 ,0);
-	    // Use event delegation to handle clicks on dynamically added buttons
-		document.addEventListener('click', function(event) {
-			// If the clicked element has id="shuffle-deck"
-			if (event.target && event.target.id === 'shuffle-deck') {
-			// Scroll the page to the very top
-				window.scrollTo(0, 0);
-			}
-		});
 
-		
-		alert("clicked again again");
 		
         shuffled = true;		
         $('#transition-img').removeClass('opacity-to-1');
