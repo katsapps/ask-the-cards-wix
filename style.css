@@ -103,7 +103,7 @@ body::-webkit-scrollbar {
 }
 #desc-div h2 {
 	font-family: Bodoni Moda, helvetica-neue, helvetica, arial, sans-serif;
-    font-size: 25px;
+    font-size: 20px;
     text-transform: none !important;
     margin-bottom: 15px;
     text-align: center;
@@ -118,6 +118,7 @@ body::-webkit-scrollbar {
 .message {
     display: block;
     margin-bottom: 15px;
+	line-height: 20px;
 }
 
 /************************* action links **********************/
