@@ -357,9 +357,18 @@ $(document).ready(function() {
 		//	$("html body").animate({scrollTop: 0 }, 800);
 		//});
 		
-		window.scrollTo(0 ,0);
+		//window.scrollTo(0 ,0);
+	    // Use event delegation to handle clicks on dynamically added buttons
+		document.addEventListener('click', function(event) {
+			// If the clicked element has id="shuffle-deck"
+			if (event.target && event.target.id === 'shuffle-deck') {
+			// Scroll the page to the very top
+				window.scrollTo(0, 0);
+			}
+		});
+
 		
-		alert("clicked again");
+		alert("clicked again again");
 		
         shuffled = true;		
         $('#transition-img').removeClass('opacity-to-1');
