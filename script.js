@@ -348,8 +348,13 @@ $(document).ready(function() {
         /*$('html, body').animate({
             scrollTop: ($('#imgs-div').offset().top)
         }, 500);*/
-		document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
+		//document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
 		//scrollMeIntoParentView();
+		
+		$("#shuffle-deck").on("click", function () {
+			$("html body").animate({scrollTop: 0 }, 800);
+		});
+		alert("clicked");
 		
         shuffled = true;		
         $('#transition-img').removeClass('opacity-to-1');
