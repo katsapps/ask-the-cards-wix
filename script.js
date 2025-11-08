@@ -308,6 +308,7 @@ $(document).ready(function() {
             chosen_num = Math.floor(Math.random() * dict_size); //65
 			//chosen_num = Math.floor(Math.random() * 16); //65
 			//chosen_num = 0; //longest
+			chosen_num = 13;
 
             var card_name = deck_dict[chosen_num.toString()]; //deck_dict["65"] = "two-of-wands"
             var img = new Image();
