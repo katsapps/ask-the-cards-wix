@@ -43,7 +43,7 @@ var deck_dict = {
     "41": 'six-of-swords',
     "42": 'seven-of-swords',
     "43": 'eight-of-swords',
-    "44": 'nine-of-swords ',
+    "44": 'nine-of-swords',
     "45": 'ten-of-swords',
     "46": 'page-of-swords',
     "47": 'knight-of-swords',
@@ -79,7 +79,7 @@ var deck_dict = {
     "77": 'king-of-wands'
 };
 
-var dict_size = 77;
+var dict_size = 78;
 var chosen_num;
 var shuffled = true;
 
@@ -164,20 +164,19 @@ var img_url_dict = {
     "0": "https://static.wixstatic.com/media/c5e9ce_444b2db0a40e4a20a715beda1bff55e0~mv2.jpg",
     "_transition": "https://static.wixstatic.com/media/c5e9ce_9c0118c344bc4189b05d754824c1f019~mv2.jpg",
     "_back": "https://static.wixstatic.com/media/c5e9ce_b1d4444d8ea04e5aab98830afc0d4d53~mv2.jpg",
-    "78m": "https://static.wixstatic.com/media/c5e9ce_db20dd3fd191439082d6c110c191d34b~mv2.jpg",
-    "77m": "https://static.wixstatic.com/media/c5e9ce_886bbf77a7ee46a3b07c4d4f4cc454d4~mv2.jpg",
-    "76m": "https://static.wixstatic.com/media/c5e9ce_cf3e157a0175454881bf6f37ea95ac2e~mv2.jpg",
-    "75m": "https://static.wixstatic.com/media/c5e9ce_abbb3d146b36423cb5da1e07ab28e379~mv2.jpg",
-    "74m": "https://static.wixstatic.com/media/c5e9ce_7a665239e2d54e5394205fb8df431206~mv2.jpg",
-    "73m": "https://static.wixstatic.com/media/c5e9ce_e065e7e89e3e4410b650c70fd4d31285~mv2.jpg",
-    "72m": "https://static.wixstatic.com/media/c5e9ce_b240cc6ca92244c5a6995a0ff37cdaf0~mv2.jpg",
-    "71m": "https://static.wixstatic.com/media/c5e9ce_dc5fb0d233ef4a7b9d4a93a2a41ca22c~mv2.jpg",
-    "70m": "https://static.wixstatic.com/media/c5e9ce_9064faea67ee41ce965fe3199b9e36da~mv2.jpg",
-    "69m": "https://static.wixstatic.com/media/c5e9ce_30bf0b8684f24de69d1cfabd119f1b19~mv2.jpg",
-    "68m": "https://static.wixstatic.com/media/c5e9ce_35f66c724c6d4a75894458ab55c861cc~mv2.jpg",
-    "67m": "https://static.wixstatic.com/media/c5e9ce_e92f894b237c4ae9b93969e9d4042d12~mv2.jpg",
-    "66m": "https://static.wixstatic.com/media/c5e9ce_9d31a7b5979245eeafb53ac3c4a78033~mv2.jpg",
-    "65m": "https://static.wixstatic.com/media/c5e9ce_a65a38b8dda24ac996c53f008e24c3c5~mv2.jpg",
+	"77m": "https://static.wixstatic.com/media/c5e9ce_db20dd3fd191439082d6c110c191d34b~mv2.jpg",
+    "76m": "https://static.wixstatic.com/media/c5e9ce_886bbf77a7ee46a3b07c4d4f4cc454d4~mv2.jpg",
+    "75m": "https://static.wixstatic.com/media/c5e9ce_cf3e157a0175454881bf6f37ea95ac2e~mv2.jpg",
+    "74m": "https://static.wixstatic.com/media/c5e9ce_abbb3d146b36423cb5da1e07ab28e379~mv2.jpg",
+    "73m": "https://static.wixstatic.com/media/c5e9ce_7a665239e2d54e5394205fb8df431206~mv2.jpg",
+    "72m": "https://static.wixstatic.com/media/c5e9ce_e065e7e89e3e4410b650c70fd4d31285~mv2.jpg",
+    "71m": "https://static.wixstatic.com/media/c5e9ce_b240cc6ca92244c5a6995a0ff37cdaf0~mv2.jpg",
+    "70m": "https://static.wixstatic.com/media/c5e9ce_dc5fb0d233ef4a7b9d4a93a2a41ca22c~mv2.jpg",
+    "69m": "https://static.wixstatic.com/media/c5e9ce_9064faea67ee41ce965fe3199b9e36da~mv2.jpg",
+    "68m": "https://static.wixstatic.com/media/c5e9ce_30bf0b8684f24de69d1cfabd119f1b19~mv2.jpg",
+    "67m": "https://static.wixstatic.com/media/c5e9ce_35f66c724c6d4a75894458ab55c861cc~mv2.jpg",
+    "66m": "https://static.wixstatic.com/media/c5e9ce_e92f894b237c4ae9b93969e9d4042d12~mv2.jpg",
+    "65m": "https://static.wixstatic.com/media/c5e9ce_9d31a7b5979245eeafb53ac3c4a78033~mv2.jpg",
     "64m": "https://static.wixstatic.com/media/c5e9ce_e4ad9e96f54f4f53a6f5f71097a33d89~mv2.jpg",
     "63m": "https://static.wixstatic.com/media/c5e9ce_d3057e0753c544329adf8b432b854203~mv2.jpg",
     "62m": "https://static.wixstatic.com/media/c5e9ce_0b4567306c05452da25207ff599f8cc0~mv2.jpg",
@@ -264,6 +263,7 @@ function set_img_size() {
 
             var img_src = $(element).attr('src');
             var src_name = getKeyByValue(img_url_dict, img_src); // 65 or 65m
+			if (!src_name) return; // Guard against undefined
             var index_of_m = src_name.lastIndexOf("m");
             if (index_of_m == -1) { //if it's desktop
                 var new_img_src = img_url_dict[src_name.concat('m')]; // 65m.jpg
@@ -277,6 +277,7 @@ function set_img_size() {
 
             var img_src = $(element).attr('src');
             var src_name = getKeyByValue(img_url_dict, img_src); // 65 or 65m
+			if (!src_name) return; // Guard against undefined
             var index_of_m = src_name.lastIndexOf("m");
             if (index_of_m > -1) { //if it's mobile  65m
                 var new_img_src = img_url_dict[src_name.slice(0, -1)]; // 65.jpg
@@ -351,7 +352,7 @@ $(document).ready(function() {
 		
 		//scrollMeIntoParentView();
 		
-		document.querySelector("#imgs-div").scrollIntoView({behaviour:"smooth",block:"start",});
+		document.querySelector("#imgs-div").scrollIntoView({behavior:"smooth",block:"start",});
 		
 		//$("#shuffle-deck").on("click", function () {
 		//	$("html body").animate({scrollTop: 0 }, 800);
